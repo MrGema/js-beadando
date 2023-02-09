@@ -1,0 +1,48 @@
+#jatekTer{
+    border: 1px solid red;
+    width: 100%;
+    height: 40vw;
+    display: flex;
+}
+#kartya{
+   border: 1px solid green;
+   width: 100%;
+    height: 20vw;
+}
+#pontok{
+    border: 1px solid blue;
+    width: 100%;
+    height: 20vw;
+}
+#korok{
+    border: 1px solid yellow;
+    width: 20%;
+    height: 40vw;
+}
+#tabla{
+    border: 1px solid violet;
+    width: 50%;
+    height: 40vw;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+#leftside{
+    width: 60vh;
+    height: 40vw;
+}
+.sordiv{
+    display: flex;
+    flex-direction: row;
+    height: 8vw;
+}
+.oszlopdiv{
+    width: 16.6%;
+    margin: 5px;
+}
+.oszlopdiv{
+    border: 1px solid black;
+}
+img{
+    width: 100%;
+}
