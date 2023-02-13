@@ -29,10 +29,10 @@ function JatekTerBetoltese(){
     jatekTer.appendChild(tabla);
     jatekTer.appendChild(korokBox);
 
-    //tabla.innerHTML="tabla";
+    /*tabla.innerHTML="tabla";
     kartyaBox.innerHTML="kartya box";
     pontBox.innerHTML="pontok";
-    korokBox.innerHTML="korok";
+    korokBox.innerHTML="korok";*/
 
 }
 
@@ -53,7 +53,6 @@ function TablaGeneralasa(){
         for (let j = 0; j < 6; j++) 
         {
             var oszlopdiv = document.createElement("div");
-            //oszlopdiv.innerHTML = "X";
             oszlopdiv.classList += " oszlopdiv";
             oszlopdiv.id = k;
             k++;
@@ -63,68 +62,66 @@ function TablaGeneralasa(){
     }
 }
 
-function KartyatTablabageneral(db){
-    //egy kartyat kivalasz es elhelyezzuk az elso negyzetbe
-    // a karty elhelyezese egy veletlen helyre
-    var kartyaszam = new Array();
-    var divid = new Array();
-    for (let index = 0; index < db; index++) {
+var kartyaszam = new Array();
+var divid = new Array();
+function KartyatTablabageneral(){
+    for (let index = 0; index < 23; index++) {
         var velkartyaszam = Math.floor(Math.random()*(23-1+1)+1);
-        var veletlendiv = Math.floor(Math.random()*(29-0+1)+0);
-        
-        if(!VaneBenne(kartyaszam, velkartyaszam))
-        {
+        if(!VaneBenne(kartyaszam,velkartyaszam)){
             kartyaszam.push(velkartyaszam);
-            var kep1 = document.createElement("img");
-            kep1.src = "img/"+velkartyaszam+".png";
+
         }
-        if (!VaneBenne(divid, veletlendiv)) 
-        {
+        else{
+            i--;
+        }
+    }
+    for (let i = 0; i < 29; i++) {
+        var veletlendiv = Math.floor(Math.random()*(29-0+1)+0);
+        if(!VaneBenne(divid,veletlendiv)){
             divid.push(veletlendiv);
-            var hely = document.getElementById(veletlendiv);
         }
-
-        /*
-        do
-        {
-            veletlendiv = Math.floor(Math.random()*(29-0+1)+0);
-        }while(VaneBenne(divid, veletlendiv))
-
-        do
-        {
-            velkartyaszam = Math.floor(Math.random()*(23-1+1)+1);
-        }while(VaneBenne(kartyaszam, velkartyaszam))
-        */
-        /*
-        kartyaszam.push(velkartyaszam);
-        var kep1 = document.createElement("img");
-        kep1.src = "img/"+velkartyaszam+".png";
-        divid.push(veletlendiv);
-        var hely = document.getElementById(veletlendiv);*/
-        hely.appendChild(kep1);
+        else{
+            i--;
+        }
         
     }
-    //hazi: dizajn - kepek,divek - ne legyen ismetlodes(helyek, szamok)
-    console.log(kartyaszam);
-    console.log(divid);
+        /*
+        {
+            divid.push(veletlendiv);
+            var kep1 = document.createElement("img");
+            kep1.src = "img/"+velkartyaszam+".png";
+            var hely = document.getElementById(veletlendiv);
+            hely.appendChild(kep1);
+        }
+        */
+    }
     
+    function VaneBenne(t,a){
+        var j = 0;
+        while(j<t.lenght && t[j]!=a)
+        {
+            j++;
+        }
+        if(j<t.lenght)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     
-}
-
-function VaneBenne(t,a){
-    var j = 0;
-    while(j<t.lenght && t[j]!=a)
-        j++;
-    if(j<t.lenght)
-        return true;
-}
+//hazi: dizajn - kepek,divek - ne legyen ismetlodes(helyek, szamok)
 
 function Main(){
     
     JatekTerBetoltese();
     JatekTerElrendezese();
     TablaGeneralasa();
-    KartyatTablabageneral(23);
+    KartyatTablabageneral();
 }
 
 Main();
+console.log(kartyaszam);
+console.log(divid);

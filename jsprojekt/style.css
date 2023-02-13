@@ -1,47 +1,57 @@
 #jatekTer{
-    border: 1px solid red;
+    /*border: 1px solid red;*/
     width: 100%;
     height: 40vw;
     display: flex;
+    background-color: darkgreen;
 }
 #kartya{
    border: 1px solid green;
    width: 100%;
-    height: 20vw;
+   margin: 5px;
+   height: 19vw;
+   background-color: lightgreen;
 }
 #pontok{
     border: 1px solid blue;
     width: 100%;
-    height: 20vw;
+    height: 19vw;
+    margin: 5px;
+    background-color: lightgreen;
 }
 #korok{
-    border: 1px solid yellow;
+    /*border: 1px solid yellow;*/
     width: 20%;
     height: 40vw;
+    background-color: red;
 }
 #tabla{
-    border: 1px solid violet;
+    /*border: 1px solid violet;*/
     width: 50%;
     height: 40vw;
     display: flex;
     flex-direction: column;
-    padding: 5px;
+    /*padding: 5px;*/
 }
 #leftside{
     width: 60vh;
-    height: 40vw;
+    height: 35vw;
+    /*padding: 10px;*/
+    background-color: darkgreen;
 }
 .sordiv{
     display: flex;
     flex-direction: row;
     height: 8vw;
+    background-color: green;
 }
 .oszlopdiv{
     width: 16.6%;
     margin: 5px;
+    /*background-color: green;*/
 }
 .oszlopdiv{
-    border: 1px solid black;
+    padding: 2px;
 }
 img{
     width: 100%;
