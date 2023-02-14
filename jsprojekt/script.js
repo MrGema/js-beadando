@@ -53,7 +53,6 @@ function TablaGeneralasa(){
         for (let j = 0; j < 6; j++) 
         {
             var oszlopdiv = document.createElement("div");
-            //oszlopdiv.innerHTML = "X";
             oszlopdiv.classList += " oszlopdiv";
             oszlopdiv.id = k;
             k++;
@@ -72,35 +71,17 @@ function KartyatTablabageneral(db){
         var velkartyaszam = Math.floor(Math.random()*(23-1+1)+1);
         var veletlendiv = Math.floor(Math.random()*(29-0+1)+0);
         
-        if(!VaneBenne(kartyaszam, velkartyaszam))
+        if(!VaneBenne(kartyaszam, velkartyaszam) && !VaneBenne(divid, veletlendiv))
         {
             kartyaszam.push(velkartyaszam);
             var kep1 = document.createElement("img");
             kep1.src = "img/"+velkartyaszam+".png";
-        }
-        if (!VaneBenne(divid, veletlendiv)) 
-        {
             divid.push(veletlendiv);
             var hely = document.getElementById(veletlendiv);
         }
-
-        /*
-        do
-        {
-            veletlendiv = Math.floor(Math.random()*(29-0+1)+0);
-        }while(VaneBenne(divid, veletlendiv))
-
-        do
-        {
-            velkartyaszam = Math.floor(Math.random()*(23-1+1)+1);
-        }while(VaneBenne(kartyaszam, velkartyaszam))
-        */
-        /*
-        kartyaszam.push(velkartyaszam);
-        var kep1 = document.createElement("img");
-        kep1.src = "img/"+velkartyaszam+".png";
-        divid.push(veletlendiv);
-        var hely = document.getElementById(veletlendiv);*/
+        else{
+            i--;
+        }
         hely.appendChild(kep1);
         
     }
