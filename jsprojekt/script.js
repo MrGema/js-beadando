@@ -29,10 +29,10 @@ function JatekTerBetoltese(){
     jatekTer.appendChild(tabla);
     jatekTer.appendChild(korokBox);
 
-    //tabla.innerHTML="tabla";
+    /*tabla.innerHTML="tabla";
     kartyaBox.innerHTML="kartya box";
     pontBox.innerHTML="pontok";
-    korokBox.innerHTML="korok";
+    korokBox.innerHTML="korok";*/
 
 }
 
@@ -62,12 +62,10 @@ function TablaGeneralasa(){
     }
 }
 
-function KartyatTablabageneral(db){
-    //egy kartyat kivalasz es elhelyezzuk az elso negyzetbe
-    // a karty elhelyezese egy veletlen helyre
-    var kartyaszam = new Array();
-    var divid = new Array();
-    for (let index = 0; index < db; index++) {
+var kartyaszam = new Array();
+var divid = new Array();
+function KartyatTablabageneral(){
+    for (let index = 0; index < 23; index++) {
         var velkartyaszam = Math.floor(Math.random()*(23-1+1)+1);
         var veletlendiv = Math.floor(Math.random()*(29-0+1)+0);
         
@@ -77,7 +75,6 @@ function KartyatTablabageneral(db){
             var kep1 = document.createElement("img");
             kep1.src = "img/"+velkartyaszam+".png";
             divid.push(veletlendiv);
-            var hely = document.getElementById(veletlendiv);
         }
         else{
             i--;
@@ -85,27 +82,43 @@ function KartyatTablabageneral(db){
         hely.appendChild(kep1);
         
     }
-    //hazi: dizajn - kepek,divek - ne legyen ismetlodes(helyek, szamok)
-    console.log(kartyaszam);
-    console.log(divid);
+        /*
+        {
+            divid.push(veletlendiv);
+            var kep1 = document.createElement("img");
+            kep1.src = "img/"+velkartyaszam+".png";
+            var hely = document.getElementById(veletlendiv);
+            hely.appendChild(kep1);
+        }
+        */
+    }
     
+    function VaneBenne(t,a){
+        var j = 0;
+        while(j<t.lenght && t[j]!=a)
+        {
+            j++;
+        }
+        if(j<t.lenght)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     
-}
-
-function VaneBenne(t,a){
-    var j = 0;
-    while(j<t.lenght && t[j]!=a)
-        j++;
-    if(j<t.lenght)
-        return true;
-}
+//hazi: dizajn - kepek,divek - ne legyen ismetlodes(helyek, szamok)
 
 function Main(){
     
     JatekTerBetoltese();
     JatekTerElrendezese();
     TablaGeneralasa();
-    KartyatTablabageneral(23);
+    KartyatTablabageneral();
 }
 
 Main();
+console.log(kartyaszam);
+console.log(divid);
