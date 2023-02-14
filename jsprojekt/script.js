@@ -68,16 +68,16 @@ function KartyatTablabageneral(){
     for (let index = 0; index < 23; index++) {
         var velkartyaszam = Math.floor(Math.random()*(23-1+1)+1);
         var veletlendiv = Math.floor(Math.random()*(29-0+1)+0);
-        
-        if(!VaneBenne(kartyaszam, velkartyaszam) && !VaneBenne(divid, veletlendiv))
+        if(!(divid.includes(veletlendiv)) && !(kartyaszam.includes(velkartyaszam)))
         {
             kartyaszam.push(velkartyaszam);
             var kep1 = document.createElement("img");
             kep1.src = "img/"+velkartyaszam+".png";
+            var hely = document.getElementById(veletlendiv);
             divid.push(veletlendiv);
         }
         else{
-            i--;
+            index--;
         }
         hely.appendChild(kep1);
         
@@ -87,7 +87,6 @@ function KartyatTablabageneral(){
             divid.push(veletlendiv);
             var kep1 = document.createElement("img");
             kep1.src = "img/"+velkartyaszam+".png";
-            var hely = document.getElementById(veletlendiv);
             hely.appendChild(kep1);
         }
         */
