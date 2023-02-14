@@ -80,16 +80,30 @@ function KartyatTablabageneral(){
             index--;
         }
         hely.appendChild(kep1);
+    }
+    var varak = ["S","P","Z","R"];
+    var varakmarvannak = new Array();
+    for (let j = 0; j < 7; j++) {
+        var veletlendiv = Math.floor(Math.random()*(29-0+1)+0);
+        var velvarszam = Math.floor(Math.random()*(4-1+1)+1)
+        var a = "img/"+velvarszam+varak[varszin]+".png";
+        var varszin = Math.floor(Math.random()*(3-0+1)+0)
+        if(!(divid.includes(veletlendiv)) && !(varakmarvannak.includes(a)))
+        {
+            console.log(varak[varszin]);
+            console.log(velvarszam);
+            var kep1 = document.createElement("img");
+            kep1.src = "img/"+velvarszam+varak[varszin]+".png";
+            var hely = document.getElementById(veletlendiv);
+            varakmarvannak.push(a);
+            divid.push(veletlendiv);
+        }
+        else{
+            j--;
+        }
+        hely.appendChild(kep1);
         
     }
-        /*
-        {
-            divid.push(veletlendiv);
-            var kep1 = document.createElement("img");
-            kep1.src = "img/"+velkartyaszam+".png";
-            hely.appendChild(kep1);
-        }
-        */
     }
     
     function VaneBenne(t,a){
