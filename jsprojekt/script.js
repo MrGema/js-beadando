@@ -81,21 +81,20 @@ function KartyatTablabageneral(){
         }
         hely.appendChild(kep1);
     }
+    var varakkepek = new Array();
     var varak = ["S","P","Z","R"];
-    var varakmarvannak = new Array();
-    for (let j = 0; j < 7; j++) {
+    for (let j = 1; j < 8; j++) {
         var veletlendiv = Math.floor(Math.random()*(29-0+1)+0);
-        var velvarszam = Math.floor(Math.random()*(4-1+1)+1)
-        var a = "img/"+velvarszam+varak[varszin]+".png";
-        var varszin = Math.floor(Math.random()*(3-0+1)+0)
-        if(!(divid.includes(veletlendiv)) && !(varakmarvannak.includes(a)))
+        var velvarszam = Math.floor(Math.random()*(4-1+1)+1);
+        var varszin = Math.floor(Math.random()*(3-0+1)+0);
+        var a = velvarszam+varak[varszin];
+        console.log(a);
+        if(!(divid.includes(veletlendiv)) && !(varakkepek.includes(a)))
         {
-            console.log(varak[varszin]);
-            console.log(velvarszam);
             var kep1 = document.createElement("img");
             kep1.src = "img/"+velvarszam+varak[varszin]+".png";
             var hely = document.getElementById(veletlendiv);
-            varakmarvannak.push(a);
+            varakkepek.push(a);
             divid.push(veletlendiv);
         }
         else{
