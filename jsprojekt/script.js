@@ -72,7 +72,7 @@ function KartyatTablabageneral(){
         {
             kartyaszam.push(velkartyaszam);
             var kep1 = document.createElement("img");
-            kep1.src = "img/"+velkartyaszam+".png";
+            kep1.src = "img/"+velkartyaszam+".jpg";
             var hely = document.getElementById(veletlendiv);
             divid.push(veletlendiv);
         }
@@ -99,6 +99,7 @@ function KartyatTablabageneral(){
         }
         else{
             j--;
+            
         }
         hely.appendChild(kep1);
         
