@@ -132,6 +132,18 @@ function Main(){
     KartyatTablabageneral();
 }
 
+function penzosztas(){
+    for (let i = 0; i < 3; i++) {
+        let penz  = [1,5,10,50];
+        var erme = document.createElement("img");
+        erme.src = "img/"+penz[i]+".png";
+        for (let i = 0; i < 4; i++) {
+           
+        }
+    }
+}
+
+
 Main();
 console.log(kartyaszam);
 console.log(divid);
