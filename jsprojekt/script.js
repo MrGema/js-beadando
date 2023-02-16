@@ -82,7 +82,7 @@ function KartyatTablabageneral(){
         var velvarszam = Math.floor(Math.random()*(4-1+1)+1);
         var varszin = Math.floor(Math.random()*(3-0+1)+0);
         var a = velvarszam+varak[varszin];
-        console.log(a);
+        //console.log(a);
         if(!(divid.includes(veletlendiv)) && !(varakkepek.includes(a)))
         {
             var kep1 = document.createElement("img");
@@ -121,36 +121,26 @@ function Main(){
     JatekTerElrendezese();
     TablaGeneralasa();
     KartyatTablabageneral();
+    penzosztas(4);
 }
 
-<<<<<<< HEAD
 
-function penzosztas(){
-    let div=document.createElement("div")
-    let ertekek= new Array(1, 5, 10, 50)
-    for(let i=0; i<3; i++){
-        var erme=document.createElement("img")
-        for(let j=0; i<4; j++){
-            erme.src="img/"+ertekek[i]+".png"
-            erme.style.width="100px"
-            erme.style.height="100px"
-            tabla.append(img)
+function penzosztas(db){
+    let ertekek = new Array(1, 5, 10, 50)
+    for(let i = 0; i < 4; i++){
+        var egysor = document.createElement("div");
+        for(let j = 0; j < db; j++){
+            var erme = document.createElement("img");
+            erme.src="img/"+ertekek[i]+".png";
+            erme.style.width="90px";
+            erme.style.height="90px";
+            egysor.append(erme);
         }
-        leftSide.appendChild(div)
-=======
-function penzosztas(){
-    for (let i = 0; i < 3; i++) {
-        let penz  = [1,5,10,50];
-        var erme = document.createElement("img");
-        erme.src = "img/"+penz[i]+".png";
-        for (let i = 0; i < 4; i++) {
-           
-        }
->>>>>>> 7354a690d0a1445a46202c69aa447d5d7f6a759c
+        kartyaBox.appendChild(egysor);
     }
 }
 
 
 Main();
-console.log(kartyaszam);
-console.log(divid);
+//console.log(kartyaszam);
+//console.log(divid);
