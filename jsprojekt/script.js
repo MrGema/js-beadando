@@ -28,12 +28,6 @@ function JatekTerBetoltese(){
     jatekTer.appendChild(leftSide);
     jatekTer.appendChild(tabla);
     jatekTer.appendChild(korokBox);
-
-    /*tabla.innerHTML="tabla";
-    kartyaBox.innerHTML="kartya box";
-    pontBox.innerHTML="pontok";
-    korokBox.innerHTML="korok";*/
-
 }
 
 function JatekTerElrendezese(){
@@ -121,9 +115,6 @@ function KartyatTablabageneral(){
             return false;
         }
     }
-    
-//hazi: dizajn - kepek,divek - ne legyen ismetlodes(helyek, szamok)
-
 function Main(){
     
     JatekTerBetoltese();
@@ -131,6 +122,23 @@ function Main(){
     TablaGeneralasa();
     KartyatTablabageneral();
 }
+
+
+function penzosztas(){
+    let div=document.createElement("div")
+    let ertekek= new Array(1, 5, 10, 50)
+    for(let i=0; i<3; i++){
+        var erme=document.createElement("img")
+        for(let j=0; i<4; j++){
+            erme.src="img/"+ertekek[i]+".png"
+            erme.style.width="100px"
+            erme.style.height="100px"
+            tabla.append(img)
+        }
+        leftSide.appendChild(div)
+    }
+}
+
 
 Main();
 console.log(kartyaszam);
