@@ -123,6 +123,7 @@ function Main(){
     KartyatTablabageneral();
 }
 
+<<<<<<< HEAD
 
 function penzosztas(){
     let div=document.createElement("div")
@@ -136,6 +137,16 @@ function penzosztas(){
             tabla.append(img)
         }
         leftSide.appendChild(div)
+=======
+function penzosztas(){
+    for (let i = 0; i < 3; i++) {
+        let penz  = [1,5,10,50];
+        var erme = document.createElement("img");
+        erme.src = "img/"+penz[i]+".png";
+        for (let i = 0; i < 4; i++) {
+           
+        }
+>>>>>>> 7354a690d0a1445a46202c69aa447d5d7f6a759c
     }
 }
 
