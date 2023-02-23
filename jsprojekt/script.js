@@ -88,6 +88,7 @@ function TablaGeneralasa(){
 
 function Main()
 {
+    
 
     JatekTerBetoltese();
     JatekTerElrendezese();
