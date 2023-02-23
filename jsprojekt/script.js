@@ -106,13 +106,27 @@ function Cellakfelotoltese(){
 }
 
 function Cellakmegjelenitese(){
-    if(cellak[0].type=="kártya"){
-        var hely = document.getElementById("1");
-        var kep = document.createElement("img");
-        var szam = cellak[0].info.id;
-        //kep.src = "img/+"szam"+.jpg";
-        hely.appendChild(kep)
-    }
+    for(let i = 0; i < cellak.length; i++)
+    {
+        if(cellak[i].type == "kártya")
+        {
+            var kep = document.createElement("img");
+            var szam = cellak[i].info.id;
+            kep.src = "img/"+szam+".jpg";
+            document.getElementById(i).appendChild(kep)
+        }
+        if(cellak[i].type == "vár")
+        {
+            var kep = document.createElement("img");
+            var szam = i-22;
+            kep.src = "img/var"+szam+".png";
+            document.getElementById(i).appendChild(kep)
+        }
+    }    
+}
+
+function Cellakmegkeverese(){
+    var a = Math.floor(Math.random()*30)
 }
 
 
@@ -122,6 +136,7 @@ function Main()
     JatekTerElrendezese();
     TablaGeneralasa();
     Cellakfelotoltese();
+    Cellakmegkeverese();
     Cellakmegjelenitese();
 }
 
