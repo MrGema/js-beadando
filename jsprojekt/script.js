@@ -85,14 +85,57 @@ function TablaGeneralasa(){
     }
 }
 
+var cellak = new Array();
+
+function Cellakfelotoltese(){
+    for (let i = 0; i < 23; i++)
+    {
+        cellak[i] = {};
+        cellak[i].type = "kártya";
+        cellak[i].info = kartyAdatok[i];
+    }
+
+    for (let i = 23; i < 30; i++) {
+        cellak[i] = {};
+        cellak[i].type = "vár";
+        cellak[i].info = varAdatok[i-23];
+    }
+
+    console.log(cellak);
+    console.log(cellak[0].info.id);
+}
+
+function Cellakmegjelenitese(){
+    if(cellak[0].type=="kártya"){
+        var hely = document.getElementById("1");
+        var kep = document.createElement("img");
+        var szam = cellak[0].info.id;
+        //kep.src = "img/+"szam"+.jpg";
+        hely.appendChild(kep)
+    }
+}
+
 
 function Main()
 {
-
     JatekTerBetoltese();
     JatekTerElrendezese();
     TablaGeneralasa();
-    
+    Cellakfelotoltese();
+    Cellakmegjelenitese();
 }
 
 Main();
+
+/*cellak[i] -> cella
+cella = {
+    type: var/kartya,
+    info:{id:1,color:value:1} {id:1,value:1,sing=''}
+}
+
+cella.type -> var
+cella.type -> 1
+
+cellak[i].type -> var
+cellak[i].info.id -> 1
+*/
