@@ -108,17 +108,16 @@ function Cellakfelotoltese(){
 function Cellakmegjelenitese(){
     for(let i = 0; i < cellak.length; i++)
     {
+        var kep = document.createElement("img");
         if(cellak[i].type == "kártya")
         {
-            var kep = document.createElement("img");
             var szam = cellak[i].info.id;
             kep.src = "img/"+szam+".jpg";
             document.getElementById(i).appendChild(kep)
         }
         if(cellak[i].type == "vár")
         {
-            var kep = document.createElement("img");
-            var szam = i-22;
+            var szam = cellak[i].info.id;
             kep.src = "img/var"+szam+".png";
             document.getElementById(i).appendChild(kep)
         }
@@ -126,31 +125,24 @@ function Cellakmegjelenitese(){
 }
 
 function Cellakmegkeverese(){
-    var a = Math.floor(Math.random()*30)
+    for (let i = 0; i < cellak.length; i++) 
+    {
+        var a = Math.floor(Math.random()*29-0+1)+0;
+        var b = Math.floor(Math.random()*29-0+1)+0;
+        var sv = cellak[a];
+        cellak[a] = cellak[b];
+        cellak[b] = sv;
+    }
+    
 }
-
 
 function Main()
 {
     JatekTerBetoltese();
     JatekTerElrendezese();
     TablaGeneralasa();
-    Cellakfelotoltese();
-    Cellakmegkeverese();
+    Cellakfelotoltese();Cellakmegkeverese();
     Cellakmegjelenitese();
 }
 
 Main();
-
-/*cellak[i] -> cella
-cella = {
-    type: var/kartya,
-    info:{id:1,color:value:1} {id:1,value:1,sing=''}
-}
-
-cella.type -> var
-cella.type -> 1
-
-cellak[i].type -> var
-cellak[i].info.id -> 1
-*/
