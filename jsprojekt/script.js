@@ -117,7 +117,7 @@ function Cellakmegjelenitese(){
         }
         if(cellak[i].type == "vár")
         {
-            var szam = cellak[i].info.id;
+            var szam  = Math.floor(Math.random()*16-01+1)+1;
             kep.src = "img/var"+szam+".png";
             document.getElementById(i).appendChild(kep)
         }
