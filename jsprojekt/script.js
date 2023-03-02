@@ -103,7 +103,6 @@ function Cellakfelotoltese(){
 }
 
 function Cellakmegjelenitese(){
-    let varsz = new Array();
     for(let i = 0; i < cellak.length; i++)
     {
         var kep = document.createElement("img");
@@ -125,18 +124,17 @@ function Cellakmegjelenitese(){
 }
 
 function soroszlopertek(){
-
-    let sorosszeg = 0;
     let oszloposszeg = 0;
-
-    for (let i = 0; i < 29; i++) {
-           let kep = document.getElementById(i).getElementsByTagName("img");
-           sorosszeg+=Number(kep[0].dataset.ertek);
-           if(i%6==0){
-            console.log(sorosszeg)
-            sorosszeg = 0;
-           }
+    console.log("Sorok összege:");
+    for (let i = 0; i < 5; i++) {
+        let sorosszeg = 0;
+        for (let j = 0; j < 6; j++) {
+            let kep = document.getElementById(i*6+j).getElementsByTagName("img");
+            sorosszeg += Number(kep[0].dataset.ertek);
+        }
+        console.log(sorosszeg);
     }
+    
 }
 
 function Cellakmegkeverese(){
