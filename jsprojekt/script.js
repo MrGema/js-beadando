@@ -95,13 +95,11 @@ function Cellakfelotoltese(){
         cellak[i].type = "kártya";
         cellak[i].info = kartyAdatok[i];
     }
-
     for (let i = 23; i < 30; i++) {
         cellak[i] = {};
         cellak[i].type = "vár";
         cellak[i].info = varAdatok[i-23];
     }
-
 }
 
 function Cellakmegjelenitese(){
@@ -113,17 +111,15 @@ function Cellakmegjelenitese(){
         {
             var szam = cellak[i].info.id;
             kep.src = "img/"+szam+".jpg";
-            document.getElementById(i).appendChild(kep)
-            imgid[k]=szam;            
-            console.log(cellak[szam])
+            kep.dataset.ertek = cellak[i].info.value;
+            document.getElementById(i).appendChild(kep);
         }
         if(cellak[i].type == "vár")
         {
-            var szam = cellak[i].info.id;
+            var szam  = Math.floor(Math.random()*16-01+1)+1;
             kep.src = "img/var"+szam+".png";
+            kep.dataset.ertek = varAdatok[szam-1].value;
             document.getElementById(i).appendChild(kep)
-            imgid[k]=szam;
-            console.log(cellak[szam])
         }
         k++;
     }    
@@ -138,16 +134,29 @@ function Cellakmegkeverese(){
         cellak[a] = cellak[b];
         cellak[b] = sv;
     }
-    
 }
 
-function soroszloposszeg(){
-    var sorosszeg=0;
-    for(let i=0; i<6; i++){
-        sorosszeg+=cellak[imgid[i]]
+function soroszlopertek(){
+    console.log("Sorok összege:");
+    for (let i = 0; i < 5; i++) {
+        let sorosszeg = 0;
+        for (let j = 0; j < 6; j++) {
+            let kep = document.getElementById(i*6+j).getElementsByTagName("img");
+            sorosszeg += Number(kep[0].dataset.ertek);
+        }
+        console.log(sorosszeg);
     }
-    sorosszeg=0;
+    console.log("Oszlopok összege:");
+    for (let i = 0; i < 6; i++) {
+        let oszloposszeg = 0;
+        for (let j = 0; j < 5; j++) {
+            let kep = document.getElementById(j*6+i).getElementsByTagName("img");
+            oszloposszeg += Number(kep[0].dataset.ertek);
+        }
+        console.log(oszloposszeg);
+    }
 }
+
 
 function Main()
 {
@@ -157,7 +166,7 @@ function Main()
     Cellakfelotoltese();
     Cellakmegkeverese();
     Cellakmegjelenitese();
-    soroszloposszeg();
+    soroszlopertek();
 }
 
 Main();
