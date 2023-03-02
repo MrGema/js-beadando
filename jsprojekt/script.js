@@ -124,7 +124,6 @@ function Cellakmegjelenitese(){
 }
 
 function soroszlopertek(){
-    let oszloposszeg = 0;
     console.log("Sorok összege:");
     for (let i = 0; i < 5; i++) {
         let sorosszeg = 0;
@@ -134,7 +133,16 @@ function soroszlopertek(){
         }
         console.log(sorosszeg);
     }
-    
+    console.log("Oszlopok összege:");
+    for (let i = 0; i < 6; i++) {
+        let oszloposszeg = 0;
+        for (let j = 0; j < 5; j++) {
+            let kep = document.getElementById(j*6+i).getElementsByTagName("img");
+            oszloposszeg += Number(kep[0].dataset.ertek);
+        }
+        console.log(oszloposszeg);
+    }
+
 }
 
 function Cellakmegkeverese(){
