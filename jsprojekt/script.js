@@ -50,6 +50,7 @@ var leftSide = document.createElement("div");
 var kartyaBox = document.createElement("div");
 var pontBox = document.createElement("div");
 var korokBox = document.createElement("div");
+var imgid=new Array();
 
 function JatekTerBetoltese(){
     leftSide.append(pontBox);
@@ -101,11 +102,10 @@ function Cellakfelotoltese(){
         cellak[i].info = varAdatok[i-23];
     }
 
-    console.log(cellak);
-    console.log(cellak[0].info.id);
 }
 
 function Cellakmegjelenitese(){
+    let k=0;
     for(let i = 0; i < cellak.length; i++)
     {
         var kep = document.createElement("img");
@@ -114,13 +114,18 @@ function Cellakmegjelenitese(){
             var szam = cellak[i].info.id;
             kep.src = "img/"+szam+".jpg";
             document.getElementById(i).appendChild(kep)
+            imgid[k]=szam;            
+            console.log(cellak[szam])
         }
         if(cellak[i].type == "vár")
         {
             var szam = cellak[i].info.id;
             kep.src = "img/var"+szam+".png";
             document.getElementById(i).appendChild(kep)
+            imgid[k]=szam;
+            console.log(cellak[szam])
         }
+        k++;
     }    
 }
 
@@ -136,13 +141,23 @@ function Cellakmegkeverese(){
     
 }
 
+function soroszloposszeg(){
+    var sorosszeg=0;
+    for(let i=0; i<6; i++){
+        sorosszeg+=cellak[imgid[i]]
+    }
+    sorosszeg=0;
+}
+
 function Main()
 {
     JatekTerBetoltese();
     JatekTerElrendezese();
     TablaGeneralasa();
-    Cellakfelotoltese();Cellakmegkeverese();
+    Cellakfelotoltese();
+    Cellakmegkeverese();
     Cellakmegjelenitese();
+    soroszloposszeg();
 }
 
 Main();
