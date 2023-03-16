@@ -1,7 +1,7 @@
 var indexek = new Array();
 var vare = true;
-var aktid=0;
-var click=0;
+var aktid=0, click=0;
+
 
 var kartyAdatok = [
     {id:1,value:1,sign:''},
@@ -125,7 +125,7 @@ function alsoterTablazat(){
             td.setAttribute("onclick", "varberkas(this)");
             td.appendChild(kep);
             tr.appendChild(td)
-            td.id = i;
+            td.id = i+"t";
         }
         else{
             let td = document.createElement("td");
@@ -149,10 +149,11 @@ function adjalkartyat(){
             vare = false;
             kep.src="img/"+i+".jpg"
             document.getElementById("kepid").appendChild(kep);
+            click++;
             console.log(aktid);
         }
         else{
-            (indexek.includes(i))
+            while(!indexek.includes(i))
                 i = velszam(1,23);
         }
     }
@@ -174,6 +175,9 @@ function berakas2(oszlopdiv){
         else if(vare == true){
             kepasd.src="img/var"+aktid+".png"
             vare = false;
+            let aktd = document.getElementById(aktid+"t");
+            aktd.style.boxShadow = "";
+
         }
         oszlopdiv.appendChild(kepasd);
         oszlopdiv.removeAttribute("onclick","berakas2(this)");
@@ -186,7 +190,8 @@ function berakas2(oszlopdiv){
 
 function varberkas(td){
     if(click==0){
-        aktid = td.id;
+        let a = td.id;
+        aktid = a.slice(0,1);
         console.log(aktid);
         click = 1;
         vare = true;
