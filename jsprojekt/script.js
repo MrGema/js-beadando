@@ -142,19 +142,24 @@ function alsoterTablazat(){
 function adjalkartyat(){
     let i = velszam(1,23);
     let kep =document.createElement("img")
-    if(!indexek.includes(i)){
-        aktid = i;
-        indexek.push(i);
-        vare = false;
-        kep.src="img/"+i+".jpg"
-        document.getElementById("kepid").appendChild(kep)
+    if(click==0){
+        if(!indexek.includes(i)){
+            aktid = i;
+            indexek.push(i);
+            vare = false;
+            kep.src="img/"+i+".jpg"
+            document.getElementById("kepid").appendChild(kep)
+            click++;
+            console.log(aktid);
+        }
+        else{
+            while(!indexek.includes(i)){
+                i=velszam(1, 23)
+            }
+        }
     }
-    else{
-        i = velszam(1,23)
-    }
-    console.log(aktid);
-
 }
+
 
 function velszam(also, felso){
     return Math.floor(Math.random()*(felso-also+1)+also);
