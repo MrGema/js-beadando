@@ -1,5 +1,8 @@
 var indexek = new Array();
 var vare = true;
+var aktid=0;
+var click=0;
+
 var kartyAdatok = [
     {id:1,value:1,sign:''},
     {id:2,value:3,sign:''},
@@ -113,7 +116,7 @@ function alsoterTablazat(){
     tablazat.style.width = "70vw"
     var tr=document.createElement("tr")
     tr.style.width = "70vw";
-    for(let i = 1; i < 9; i++){
+    for(let i = 1; i < 10; i++){
         let kep = document.createElement("img");
         let td = document.createElement("td");
         kep.src = "img/var"+i+".png";
@@ -129,32 +132,30 @@ function alsoterTablazat(){
 }
 
 function adjalkartyat(){
+    if(click==0){
     let i = velszam(1,23);
     if(!indexek.includes(i)){
         aktid = i;
         indexek.push(i);
         vare = false;
+        click++;
+        console.log(aktid);
     }
     else{
-        i = velszam(1,23)
+        while(indexek.includes(i)){
+            i = velszam(1,23);
+            indexek.push(i);
+            aktid = i;
+        }
     }
-    console.log(aktid);
-
+    }
 }
 
 function velszam(also, felso){
     return Math.floor(Math.random()*(felso-also+1)+also);
 }
 
-var aktid=0;
-var click=0;
-function berakas(td){
-    if(click==0){
-        td.style.display="none";
-        aktid=td.id;
-        click++;
-    }
-}
+
 
 
 function berakas2(oszlopdiv){
@@ -162,7 +163,7 @@ function berakas2(oszlopdiv){
     if(aktid!=0){
         if(vare == false){
             kepasd.src="img/"+aktid+".jpg"
-            vare = true;;
+            vare = true;
         }
         else if(vare == true){
             kepasd.src="img/var"+aktid+".png"
@@ -175,22 +176,12 @@ function berakas2(oszlopdiv){
     }
 }
 
-function varberkas(oszlopdiv){
-    var kepasd=document.createElement("img");
+function varberkas(td){
     if(aktid!=0){
-            kepasd.src="img/var"+Number(aktid-23)+".png"
-    } 
-        oszlopdiv.appendChild(kepasd);
         oszlopdiv.removeAttribute("onclick","berakas2(this)");
-        aktid=0;
-        click=0;
+        aktid=document.get;
+    }
 }
-
-/*function vare(){
-
-}*/
-
-
 function Main()
 {
     JatekTerBetoltese();
