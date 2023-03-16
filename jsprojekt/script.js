@@ -1,5 +1,8 @@
 var indexek = new Array();
 var vare = true;
+var aktid=0;
+var click=0;
+
 var kartyAdatok = [
     {id:1,value:1,sign:''},
     {id:2,value:3,sign:''},
@@ -114,14 +117,22 @@ function alsoterTablazat(){
     var tr=document.createElement("tr")
     tr.style.width = "70vw";
     for(let i = 1; i < 9; i++){
-        let kep = document.createElement("img");
-        let td = document.createElement("td");
-        kep.src = "img/var"+i+".png";
-        td.style.width = "7vw";
-        td.setAttribute("onclick", "varberkas(this)");
-        td.appendChild(kep);
-        tr.appendChild(td)
-        td.id = i;
+        if(i<8){
+            let kep = document.createElement("img");
+            let td = document.createElement("td");
+            kep.src = "img/var"+i+".png";
+            td.style.width = "7vw";
+            td.setAttribute("onclick", "varberkas(this)");
+            td.appendChild(kep);
+            tr.appendChild(td)
+            td.id = i;
+        }
+        else{
+            let td = document.createElement("td");
+            tr.appendChild(td)
+            td.style.width = "7vw";
+            td.id="kepid"
+        }
     }
         tablazat.appendChild(tr);
         alsoter.appendChild(tablazat);
@@ -130,10 +141,13 @@ function alsoterTablazat(){
 
 function adjalkartyat(){
     let i = velszam(1,23);
+    let kep =document.createElement("img")
     if(!indexek.includes(i)){
         aktid = i;
         indexek.push(i);
         vare = false;
+        kep.src="img/"+i+".jpg"
+        document.getElementById("kepid").appendChild(kep)
     }
     else{
         i = velszam(1,23)
@@ -146,15 +160,6 @@ function velszam(also, felso){
     return Math.floor(Math.random()*(felso-also+1)+also);
 }
 
-var aktid=0;
-var click=0;
-function berakas(td){
-    if(click==0){
-        td.style.display="none";
-        aktid=td.id;
-        click++;
-    }
-}
 
 
 function berakas2(oszlopdiv){
@@ -170,6 +175,8 @@ function berakas2(oszlopdiv){
         }
         oszlopdiv.appendChild(kepasd);
         oszlopdiv.removeAttribute("onclick","berakas2(this)");
+        let kepid=document.getElementById("kepid");
+        kepid.innerHTML="";
         aktid=0;
         click=0;
     }
