@@ -1,7 +1,7 @@
 var indexek = new Array();
 var vare = true;
-var aktid=0;
-var click=0;
+var aktid=0, click=0;
+
 
 var kartyAdatok = [
     {id:1,value:1,sign:''},
@@ -125,7 +125,7 @@ function alsoterTablazat(){
             td.setAttribute("onclick", "varberkas(this)");
             td.appendChild(kep);
             tr.appendChild(td)
-            td.id = i;
+            td.id = i+"t";
         }
         else{
             let td = document.createElement("td");
@@ -140,22 +140,37 @@ function alsoterTablazat(){
 }
 
 function adjalkartyat(){
+<<<<<<< HEAD
     let i = velszam(1,23);
     let kep =document.createElement("img")
     if(click==0){
+=======
+    if(click==0){
+        let i = velszam(1,23);
+        let kep =document.createElement("img")
+>>>>>>> ece1262310ba0668003e55c71a1cbdd32f8672c1
         if(!indexek.includes(i)){
             aktid = i;
             indexek.push(i);
             vare = false;
             kep.src="img/"+i+".jpg"
+<<<<<<< HEAD
             document.getElementById("kepid").appendChild(kep)
+=======
+            document.getElementById("kepid").appendChild(kep);
+>>>>>>> ece1262310ba0668003e55c71a1cbdd32f8672c1
             click++;
             console.log(aktid);
         }
         else{
+<<<<<<< HEAD
             while(!indexek.includes(i)){
                 i=velszam(1, 23)
             }
+=======
+            while(!indexek.includes(i))
+                i = velszam(1,23);
+>>>>>>> ece1262310ba0668003e55c71a1cbdd32f8672c1
         }
     }
 }
@@ -172,11 +187,14 @@ function berakas2(oszlopdiv){
     if(aktid!=0){
         if(vare == false){
             kepasd.src="img/"+aktid+".jpg"
-            vare = true;;
+            vare = true;
         }
         else if(vare == true){
             kepasd.src="img/var"+aktid+".png"
             vare = false;
+            let aktd = document.getElementById(aktid+"t");
+            aktd.style.boxShadow = "";
+
         }
         oszlopdiv.appendChild(kepasd);
         oszlopdiv.removeAttribute("onclick","berakas2(this)");
@@ -187,22 +205,17 @@ function berakas2(oszlopdiv){
     }
 }
 
-function varberkas(oszlopdiv){
-    var kepasd=document.createElement("img");
-    if(aktid!=0){
-            kepasd.src="img/var"+Number(aktid-23)+".png"
-    } 
-        oszlopdiv.appendChild(kepasd);
-        oszlopdiv.removeAttribute("onclick","berakas2(this)");
-        aktid=0;
-        click=0;
+function varberkas(td){
+    if(click==0){
+        let a = td.id;
+        aktid = a.slice(0,1);
+        console.log(aktid);
+        click = 1;
+        vare = true;
+        td.removeAttribute("onclick","varberkas(this)");
+        td.style.boxShadow = "0px 0px 79px 19px rgba(71,20,0,.75)";
+    }
 }
-
-/*function vare(){
-
-}*/
-
-
 function Main()
 {
     JatekTerBetoltese();
