@@ -177,7 +177,7 @@ function berakas2(oszlopdiv){
             vare = false;
             let aktd = document.getElementById(aktid+"t");
             aktd.style.boxShadow = "";
-
+            aktd.style.visibility = "hidden";
         }
         oszlopdiv.appendChild(kepasd);
         oszlopdiv.removeAttribute("onclick","berakas2(this)");
