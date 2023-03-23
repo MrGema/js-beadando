@@ -130,7 +130,6 @@ function alsoterTablazat(){
         if(i<8){
             let td = document.createElement("td");
             td.style.width = "7vw";
-            td.setAttribute("onclick", "varberkas(this)");
             tr.appendChild(td)
             td.id = i+"t";
         }
@@ -216,6 +215,7 @@ function varberkas(oszlopdiv){
 function varkiosztas(){
     for(let i=1; i<8;i++){
         let td=document.getElementById(i+"t");
+        td.setAttribute("onclick", "varberkas(this)");
         let kep = document.createElement("img");
         if(i<4){
             kep.src="img/var1.png"; 
@@ -230,7 +230,6 @@ function varkiosztas(){
             kep.src="img/var4.png";
         }
         td.appendChild(kep);
-        td.setAttribute("onclick", "varberkas(this)");
     }
 }
 
