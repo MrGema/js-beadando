@@ -1,7 +1,7 @@
 var indexek = new Array();
 var vare = true;
-var aktid=0, click=0;
-
+var aktid=0;
+var click=0;
 
 var kartyAdatok = [
     {id:1,value:1,sign:''},
@@ -109,29 +109,23 @@ function Cellakfelotoltese(){
 
 
 function alsoterTablazat(){
-    let k=1;
-    let asd=1;
-    let idk=1;
     let tablazat=document.createElement("table");
     tablazat.style.width = "70vw"
     var tr=document.createElement("tr")
     tr.style.width = "70vw";
     for(let i = 1; i < 9; i++){
         if(i<8){
-            let kep = document.createElement("img");
             let td = document.createElement("td");
-            kep.src = "img/var"+i+".png";
             td.style.width = "7vw";
             td.setAttribute("onclick", "varberkas(this)");
-            td.appendChild(kep);
             tr.appendChild(td)
             td.id = i+"t";
         }
         else{
             let td = document.createElement("td");
-            tr.appendChild(td);
+            tr.appendChild(td)
             td.style.width = "7vw";
-            td.id="kepid";
+            td.id="kepid"
         }
     }
         tablazat.appendChild(tr);
@@ -140,21 +134,22 @@ function alsoterTablazat(){
 }
 
 function adjalkartyat(){
+    let i = velszam(1,23);
+    let kep =document.createElement("img")
     if(click==0){
-        let i = velszam(1,23);
-        let kep =document.createElement("img")
         if(!indexek.includes(i)){
             aktid = i;
             indexek.push(i);
             vare = false;
-            kep.src="img/"+i+".jpg";
-            document.getElementById("kepid").appendChild(kep);
+            kep.src="img/"+i+".jpg"
+            document.getElementById("kepid").appendChild(kep)
             click++;
             console.log(aktid);
         }
         else{
-            while(!indexek.includes(i))
-                i = velszam(1,23);
+            while(!indexek.includes(i)){
+                i=velszam(1, 23)
+            }
         }
     }
 }
@@ -172,21 +167,11 @@ function berakas2(oszlopdiv){
         if(vare == false){
             kepasd.src="img/"+aktid+".jpg"
             vare = true;
-<<<<<<< HEAD
-            kepasd.style.borderRadius="44px"
-=======
-            kepasd.style.borderRadius = "44px";
->>>>>>> d2a3eefa5432be4b7ac0c7a1e79b745415bdd785
         }
         else if(vare == true){
             kepasd.src="img/var"+aktid+".png"
             vare = false;
-            let aktd = document.getElementById(aktid+"t");
-<<<<<<< HEAD
-            aktd.style.visibility="hidden"
-=======
-            aktd.style.visibility = "hidden";
->>>>>>> d2a3eefa5432be4b7ac0c7a1e79b745415bdd785
+
         }
         oszlopdiv.appendChild(kepasd);
         oszlopdiv.removeAttribute("onclick","berakas2(this)");
@@ -197,23 +182,37 @@ function berakas2(oszlopdiv){
     }
 }
 
-function varberkas(td){
-    if(click==0){
-        let a = td.id;
-        aktid = a.slice(0,1);
-        click = 1;
-        vare = true;
-        td.removeAttribute("onclick","varberkas(this)");
-<<<<<<< HEAD
-        td.style.boxShadow = "0px 0px 79px 19px rgba(71,20,0,.75)";
-        td.style.borderRadius="44px";
-=======
-        td.style.boxShadow = " 1px 200px 153px 200px rgba(0,0,0,0.75)";
-        //box-shadow: -200px 200px 5px 0px rgba(0,0,0,0.75);
-        td.style.borderRadius = "44px";
->>>>>>> d2a3eefa5432be4b7ac0c7a1e79b745415bdd785
+function varberkas(oszlopdiv){
+    var kepasd=document.createElement("img");
+    if(aktid!=0){
+            kepasd.src="img/var"+Number(aktid-23)+".png"
+    } 
+        oszlopdiv.appendChild(kepasd);
+        oszlopdiv.removeAttribute("onclick","berakas2(this)");
+        aktid=0;
+        click=0;
+}
+
+function varkiosztas(){
+    for(let i=1; i<8;i++){
+        let td=document.getElementById(i+"t");
+        let kep = document.createElement("img");
+        if(i<4){
+            kep.src="img/var1.png"; 
+        }
+        else if(i<6 && i>=4){
+            kep.src="img/var2.png";
+        }
+        else if(i==6){
+            kep.src="img/var3.png";
+        }
+        else if(i==7){
+            kep.src="img/var4.png";
+        }
+        td.appendChild(kep);
     }
 }
+
 function Main()
 {
     JatekTerBetoltese();
@@ -221,6 +220,7 @@ function Main()
     TablaGeneralasa();
     Cellakfelotoltese();
     alsoterTablazat();
+    varkiosztas();
 }
 
 Main();

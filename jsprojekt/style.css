@@ -3,22 +3,20 @@
     width: 100%;
     height: 40vw;
     display: flex;
-<<<<<<< HEAD
-=======
     background: url(img/tablahatter.jpg);
     background-size: cover;
     background-repeat: no-repeat;
->>>>>>> d2a3eefa5432be4b7ac0c7a1e79b745415bdd785
 }
 #kartya{
   /* border: 1px solid green;*/
-   width: 100%;
+    width: 100%;
     height: 20vw;
     background-size: contain;
     background-repeat: no-repeat;
     margin: 3px;
     background-color: hsla(120, 3%, 70%, 0.3);
     border-top: 5px solid rgb(0, 0, 0,);
+    
 }
 #pontok{
     /*border: 1px solid blue;*/
@@ -46,12 +44,6 @@
     display: flex;
     flex-direction: column;
     padding: 5px;
-<<<<<<< HEAD
-    background-image: url("img/tablahatter.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-=======
->>>>>>> d2a3eefa5432be4b7ac0c7a1e79b745415bdd785
 }
 #leftside{
     width: 60vh;
@@ -66,13 +58,8 @@
     width: 16.6%;
     margin: 5px;
     background-color: hsla(120, 3%, 70%, 0.3);
-<<<<<<< HEAD
-    border: 5px solid rgba(0, 0, 0, 0.3);
-    border-radius: 44px;
-=======
     border-radius: 44px;
     border: 5px solid rgba(0, 0, 0, 0.3);
->>>>>>> d2a3eefa5432be4b7ac0c7a1e79b745415bdd785
 }
 
 img{
