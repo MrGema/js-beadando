@@ -126,12 +126,16 @@ function alsoterTablazat(){
     tablazat.style.width = "70vw"
     var tr=document.createElement("tr")
     tr.style.width = "70vw";
+    tr.style.display = "flex";
     for(let i = 1; i < 9; i++){
         if(i<8){
             let kep = document.createElement("img");
             let td = document.createElement("td");
             kep.src = "img/var"+i+".png";
             td.style.width = "7vw";
+            td.style.display = "flex";
+            td.style.alignContent ="center";
+            td.style.justifyContent ="center";
             td.setAttribute("onclick", "varberkas(this)");
             td.appendChild(kep);
             tr.appendChild(td)
@@ -210,8 +214,7 @@ function varberkas(td){
         click = 1;
         vare = true;
         td.removeAttribute("onclick","varberkas(this)");
-        td.style.boxShadow = " 1px 200px 153px 200px rgba(0,0,0,0.75)";
-        //box-shadow: -200px 200px 5px 0px rgba(0,0,0,0.75);
+        td.style.background = "rgba(0,0,0,0.75)";
         td.style.borderRadius = "44px";
     }
 }
