@@ -1,11 +1,13 @@
 #jatekTer{
     /*border: 1px solid red;*/
     width: 100%;
-    height: 40vw;
+    height: 41vw;
     display: flex;
     background: url(img/tablahatter.jpg);
     background-size: cover;
     background-repeat: no-repeat;
+    border-radius: 20px;
+    padding: 5px;
 }
 #kartya{
   /* border: 1px solid green;*/
@@ -15,27 +17,25 @@
     background-repeat: no-repeat;
     margin: 3px;
     background-color: hsla(120, 3%, 70%, 0.3);
-    border-top: 5px solid rgb(0, 0, 0,);
+    border-radius: 44px;
+}
+#korok{
+    background-color: red;
+    border: 5px solid rgb(0, 0, 0,);
 }
 #pontok{
-    /*border: 1px solid blue;*/
     width: 100%;
     height: 20vw;
     margin: 3px;
-    background: url("img/hatterkartyabox.png");
-    background-size: contain;
+    background: url("img/kartyaalap.jpg");
+    background-size: cover;
     background-repeat: no-repeat;
-    background-position: 125px 5px;
-
+    border-radius: 44px;
 }
 #pontok:hover{
-    scale: 1.05;
-    transition: 0.5s
-}
-#korok{
-    /*border: 1px solid yellow;*/
-    width: 20%;
-    height: 40vw;
+    background: url("img/kartyhover.png");
+    background-size: cover;
+    background-repeat: no-repeat;   
 }
 #tabla{
     width: 50%;
