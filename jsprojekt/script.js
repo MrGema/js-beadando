@@ -129,9 +129,9 @@ function alsoterTablazat(){
         }
         else{
             let td = document.createElement("td");
-            tr.appendChild(td)
+            tr.appendChild(td);
             td.style.width = "7vw";
-            td.id="kepid"
+            td.id="kepid";
         }
     }
         tablazat.appendChild(tr);
@@ -147,7 +147,7 @@ function adjalkartyat(){
             aktid = i;
             indexek.push(i);
             vare = false;
-            kep.src="img/"+i+".jpg"
+            kep.src="img/"+i+".jpg";
             document.getElementById("kepid").appendChild(kep);
             click++;
             console.log(aktid);
@@ -172,13 +172,21 @@ function berakas2(oszlopdiv){
         if(vare == false){
             kepasd.src="img/"+aktid+".jpg"
             vare = true;
+<<<<<<< HEAD
             kepasd.style.borderRadius="44px"
+=======
+            kepasd.style.borderRadius = "44px";
+>>>>>>> d2a3eefa5432be4b7ac0c7a1e79b745415bdd785
         }
         else if(vare == true){
             kepasd.src="img/var"+aktid+".png"
             vare = false;
             let aktd = document.getElementById(aktid+"t");
+<<<<<<< HEAD
             aktd.style.visibility="hidden"
+=======
+            aktd.style.visibility = "hidden";
+>>>>>>> d2a3eefa5432be4b7ac0c7a1e79b745415bdd785
         }
         oszlopdiv.appendChild(kepasd);
         oszlopdiv.removeAttribute("onclick","berakas2(this)");
@@ -196,8 +204,14 @@ function varberkas(td){
         click = 1;
         vare = true;
         td.removeAttribute("onclick","varberkas(this)");
+<<<<<<< HEAD
         td.style.boxShadow = "0px 0px 79px 19px rgba(71,20,0,.75)";
         td.style.borderRadius="44px";
+=======
+        td.style.boxShadow = " 1px 200px 153px 200px rgba(0,0,0,0.75)";
+        //box-shadow: -200px 200px 5px 0px rgba(0,0,0,0.75);
+        td.style.borderRadius = "44px";
+>>>>>>> d2a3eefa5432be4b7ac0c7a1e79b745415bdd785
     }
 }
 function Main()
