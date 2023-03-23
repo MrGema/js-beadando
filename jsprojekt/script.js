@@ -71,6 +71,8 @@ function JatekTerElrendezese(){
     leftSide.id = "leftside";
     kartyaBox.id = "kartya";
     pontBox.id = "pontok";
+    pontBox.setAttribute("onmouseover", "hover()");
+    pontBox.setAttribute("onmoouseleave", "hatter()");
     tabla.id = "tabla";
     korokBox.id = "korok";
     jatekTer.id = "jatekTer"
@@ -91,10 +93,21 @@ function TablaGeneralasa(){
             sordiv.appendChild(oszlopdiv);
         }
         tabla.appendChild(sordiv);
-        
     }
     pontBox.setAttribute("onclick","adjalkartyat()");
 }
+
+function hover(){
+    document.getElementById("pontok").style.background = "url('img/kartyhover.png')";
+    document.getElementById("pontok").style.backgroundSize = "cover";
+    document.getElementById("pontok").style.backgroundRepeat = "no-repeat";
+}
+function hatter(){
+    document.getElementById("pontok").style.background = "url('img/kartyaalap.jpg')";
+    document.getElementById("pontok").style.backgroundSize = "cover";
+    document.getElementById("pontok").style.backgroundRepeat = "no-repeat";
+}
+
 
 var cellak = new Array();
 
@@ -137,6 +150,9 @@ function adjalkartyat(){
     let i = velszam(1,23);
     let kep =document.createElement("img")
     if(click==0){
+        document.getElementById("pontok").style.background = "url('img/kartyaeldob.png')";
+        let i = velszam(1,23);
+        let kep =document.createElement("img")
         if(!indexek.includes(i)){
             aktid = i;
             indexek.push(i);
@@ -179,6 +195,10 @@ function berakas2(oszlopdiv){
         kepid.innerHTML="";
         aktid=0;
         click=0;
+        let kartyak = document.getElementById("pontok");
+        kartyak.style.background = "url('img/kartyaalap.jpg')";
+        kartyak.style.backgroundSize = "cover";
+        kartyak.style.backgroundRepeat = "no-repeat";
     }
 }
 
@@ -210,6 +230,7 @@ function varkiosztas(){
             kep.src="img/var4.png";
         }
         td.appendChild(kep);
+        td.setAttribute("onclick", "varberkas(this)");
     }
 }
 
