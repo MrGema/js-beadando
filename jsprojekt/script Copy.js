@@ -151,6 +151,7 @@ function soroszlopertek(){
         for (let j = 0; j < 5; j++) {
             let kep = document.getElementById(j*6+i).getElementsByTagName("img");
             oszloposszeg += Number(kep[0].dataset.ertek);
+            oszloposszeg += Number(kep[0].dataset.ertek);
         }
         console.log(oszloposszeg);
     }

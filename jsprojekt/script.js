@@ -1,7 +1,7 @@
 var indexek = new Array();
 var vare = true;
-var aktid=0;
-var click=0;
+var aktid=0, click=0, telivan = 0;
+
 
 var kartyAdatok = [
     {id:1,value:1,sign:''},
@@ -129,14 +129,17 @@ function alsoterTablazat(){
     tr.style.display = "flex";
     for(let i = 1; i < 9; i++){
         if(i<8){
+            let kep=document.createElement("img")
             let td = document.createElement("td");
+            kep.src="img/var"+i+".png";
             td.setAttribute("onclick", "varberkas(this)");
             td.style.width = "7vw";
             td.style.display = "flex";
             td.style.alignContent ="center";
             td.style.justifyContent ="center";
+            td.appendChild(kep)
             td.id = i+"t";
-            tr.appendChild(td)
+            kep.dataset.ertek = varAdatok[i-1].value;
         }
         else{
             let td = document.createElement("td");
@@ -147,7 +150,6 @@ function alsoterTablazat(){
     }
         tablazat.appendChild(tr);
         alsoter.appendChild(tablazat);
-        varkiosztas();
 
 }
 
@@ -156,16 +158,18 @@ function adjalkartyat(){
     let kep =document.createElement("img")
     if(click==0){
         document.getElementById("pontok").style.background = "url('img/kartyaeldob.png')";
+        document.getElementById("pontok").style.backgroundSize = "cover";
+        document.getElementById("pontok").style.backgroundRepeat = "no-repeat";
         let i = velszam(1,23);
-        let kep =document.createElement("img")
+        let kep = document.createElement("img")
         if(!indexek.includes(i)){
-            aktid = i;
             indexek.push(i);
             vare = false;
-            kep.src="img/"+i+".jpg"
-            document.getElementById("kepid").appendChild(kep)
+            kep.src="img/"+i+".jpg";
+            document.getElementById("kepid").appendChild(kep); 
+            kep.dataset.ertek = kartyAdatok[i-1].value;
             click++;
-            console.log(aktid);
+            aktid = kep;
         }
         else{
             while(!indexek.includes(i)){
@@ -175,24 +179,51 @@ function adjalkartyat(){
     }
 }
 
+function soroszlopertek(){
+    console.log("Sorok összege:");
+    for (let i = 0; i < 5; i++) {
+        let sorosszeg = 0;
+        for (let j = 0; j < 6; j++) {
+            let kep = document.getElementById(i*6+j).getElementsByTagName("img");
+            sorosszeg += Number(kep[0].dataset.ertek);
+        }
+        console.log(sorosszeg);
+    }
+    console.log("Oszlopok összege:");
+    for (let i = 0; i < 6; i++) {
+        let oszloposszeg = 0;
+        for (let j = 0; j < 5; j++) {
+            let kep = document.getElementById(j*6+i).getElementsByTagName("img");
+            oszloposszeg += Number(kep[0].dataset.ertek);
+        }
+        console.log(oszloposszeg);
+    }
+}
 
 function velszam(also, felso){
     return Math.floor(Math.random()*(felso-also+1)+also);
 }
 
-
-
 function berakas2(oszlopdiv){
-    var kepasd=document.createElement("img");
+    let kepasd = document.createElement("img");
     if(aktid!=0){
         if(vare == false){
-            kepasd.src="img/"+aktid+".jpg"
+            kepasd  = aktid;
             vare = true;
+            console.log(kepasd);
+            kepasd.style.borderRadius = "44px";
+            telivan++;
         }
         else if(vare == true){
-            kepasd.src="img/var"+aktid+".png"
+            kepasd  = aktid;
             vare = false;
-
+            console.log(kepasd);
+            let aktd = document.getElementById(aktid+"t");
+            aktd.style.visibility = "hidden";
+            telivan++;
+        }
+        if(telivan==30){
+            soroszlopertek();
         }
         oszlopdiv.appendChild(kepasd);
         oszlopdiv.removeAttribute("onclick","berakas2(this)");
@@ -200,6 +231,7 @@ function berakas2(oszlopdiv){
         kepid.innerHTML="";
         aktid=0;
         click=0;
+        console.log(telivan);
         let kartyak = document.getElementById("pontok");
         kartyak.style.background = "url('img/kartyaalap.jpg')";
         kartyak.style.backgroundSize = "cover";
@@ -219,28 +251,6 @@ function varberkas(td){
         td.style.borderRadius = "44px";
     }
 }
-
-function varkiosztas(){
-    for(let i=1; i<8;i++){
-        let td=document.getElementById(i+"t");
-        console.log(i);
-        let kep = document.createElement("img");
-        if(i<4){
-            kep.src="img/var1.png"; 
-        }
-        else if(i<6 && i>=4){
-            kep.src="img/var2.png";
-        }
-        else if(i==6){
-            kep.src="img/var3.png";
-        }
-        else if(i==7){
-            kep.src="img/var4.png";
-        }
-        td.appendChild(kep);
-    }
-}
-
 
 function Main()
 {
