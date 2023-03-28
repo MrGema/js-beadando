@@ -126,12 +126,17 @@ function alsoterTablazat(){
     tablazat.style.width = "70vw"
     var tr=document.createElement("tr")
     tr.style.width = "70vw";
+    tr.style.display = "flex";
     for(let i = 1; i < 9; i++){
         if(i<8){
             let td = document.createElement("td");
+            td.setAttribute("onclick", "varberkas(this)");
             td.style.width = "7vw";
-            tr.appendChild(td)
+            td.style.display = "flex";
+            td.style.alignContent ="center";
+            td.style.justifyContent ="center";
             td.id = i+"t";
+            tr.appendChild(td)
         }
         else{
             let td = document.createElement("td");
@@ -142,6 +147,7 @@ function alsoterTablazat(){
     }
         tablazat.appendChild(tr);
         alsoter.appendChild(tablazat);
+        varkiosztas();
 
 }
 
@@ -201,21 +207,23 @@ function berakas2(oszlopdiv){
     }
 }
 
-function varberkas(oszlopdiv){
-    var kepasd=document.createElement("img");
-    if(aktid!=0){
-            kepasd.src="img/var"+Number(aktid-23)+".png"
-    } 
-        oszlopdiv.appendChild(kepasd);
-        oszlopdiv.removeAttribute("onclick","berakas2(this)");
-        aktid=0;
-        click=0;
+function varberkas(td){
+    if(click==0){
+        let a = td.id;
+        aktid = a.slice(0,1);
+        console.log("ffsaafs  "+aktid)
+        click++;
+        vare = true;
+        td.removeAttribute("onclick","varberkas(this)");
+        td.style.background = "rgba(0,0,0,0.75)";
+        td.style.borderRadius = "44px";
+    }
 }
 
 function varkiosztas(){
     for(let i=1; i<8;i++){
         let td=document.getElementById(i+"t");
-        td.setAttribute("onclick", "varberkas(this)");
+        console.log(i);
         let kep = document.createElement("img");
         if(i<4){
             kep.src="img/var1.png"; 
@@ -233,6 +241,7 @@ function varkiosztas(){
     }
 }
 
+
 function Main()
 {
     JatekTerBetoltese();
@@ -240,7 +249,6 @@ function Main()
     TablaGeneralasa();
     Cellakfelotoltese();
     alsoterTablazat();
-    varkiosztas();
 }
 
 Main();

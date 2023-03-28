@@ -1,13 +1,13 @@
 #jatekTer{
-    /*border: 1px solid red;*/
     width: 100%;
-    height: 41vw;
+    height: 42vw;
     display: flex;
     background: url(img/tablahatter.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 20px;
     padding: 5px;
+    border: 5px solid black;
 }
 #kartya{
   /* border: 1px solid green;*/
