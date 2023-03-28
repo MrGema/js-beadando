@@ -128,29 +128,42 @@ function alsoterTablazat(){
     tr.style.width = "70vw";
     tr.style.display = "flex";
     for(let i = 1; i < 9; i++){
+        let kep=document.createElement("img")
+        let td = document.createElement("td");
+        td.setAttribute("onclick", "varberkas(this)");
+        td.style.width = "7vw";
+        td.style.display = "flex";
+        td.style.alignContent ="center";
+        td.style.justifyContent ="center";
+        td.id = i+"t";
         if(i<8){
-            let kep=document.createElement("img")
-            let td = document.createElement("td");
-            kep.src="img/var"+i+".png";
-            td.setAttribute("onclick", "varberkas(this)");
-            td.style.width = "7vw";
-            td.style.display = "flex";
-            td.style.alignContent ="center";
-            td.style.justifyContent ="center";
-            td.appendChild(kep)
-            td.id = i+"t";
-            kep.dataset.ertek = varAdatok[i-1].value;
+            if(i<4){
+                kep.src="img/var1.png"; 
+                kep.dataset.ertek = 1
+            }
+            else if(i<6 && i>=4){
+                kep.src="img/var2.png";
+                kep.dataset.ertek = 2
+            }
+            else if(i==6){
+                kep.src="img/var3.png";
+                kep.dataset.ertek = 3
+            }
+            else if(i==7){
+                kep.src="img/var4.png";
+                kep.dataset.ertek = 4
+            }
         }
         else{
-            let td = document.createElement("td");
             tr.appendChild(td)
             td.style.width = "7vw";
             td.id="kepid"
         }
+        td.appendChild(kep)
+        tr.appendChild(td)
     }
         tablazat.appendChild(tr);
         alsoter.appendChild(tablazat);
-
 }
 
 function adjalkartyat(){
@@ -218,7 +231,7 @@ function berakas2(oszlopdiv){
             kepasd  = aktid;
             vare = false;
             console.log(kepasd);
-            let aktd = document.getElementById(aktid+"t");
+            let aktd = document.getElementById(aktidtd+"t");
             aktd.style.visibility = "hidden";
             telivan++;
         }
@@ -239,11 +252,13 @@ function berakas2(oszlopdiv){
     }
 }
 
+var aktidtd=0;
+
 function varberkas(td){
     if(click==0){
         let a = td.id;
-        aktid = a.slice(0,1);
-        console.log("ffsaafs  "+aktid)
+        aktidtd = a.slice(0,1);
+        aktid=td.getElementsByTagName("img")[0];
         click++;
         vare = true;
         td.removeAttribute("onclick","varberkas(this)");
