@@ -1,20 +1,3 @@
-/*var objektum = {
-    szam1: 34,
-    szam2: 23,
-    id: 0,
-    ertek: "Zöldvár4",
-    Torol: Torol(),
-}
-
-function Torol(){
-    
-    return console.log("töröl");
-    
-}
-
-console.log(objektum.szam1);
-call(objektum.Torol);*/
-
 var jatekTer = document.getElementById("jatekter");
 var tabla = document.createElement("div");
 var leftSide = document.createElement("div");
@@ -142,5 +125,3 @@ function penzosztas(db){
 
 
 Main();
-//console.log(kartyaszam);
-//console.log(divid);

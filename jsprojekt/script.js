@@ -1,6 +1,6 @@
 var indexek = new Array();
 var vare = true;
-var aktid=0, click=0;
+var aktid=0, click=0, telivan = 0;
 
 
 var kartyAdatok = [
@@ -140,6 +140,7 @@ function alsoterTablazat(){
             td.appendChild(kep);
             tr.appendChild(td)
             td.id = i+"t";
+            kep.dataset.ertek = varAdatok[i-1].value;
         }
         else{
             let td = document.createElement("td");
@@ -156,16 +157,18 @@ function alsoterTablazat(){
 function adjalkartyat(){
     if(click==0){
         document.getElementById("pontok").style.background = "url('img/kartyaeldob.png')";
+        document.getElementById("pontok").style.backgroundSize = "cover";
+        document.getElementById("pontok").style.backgroundRepeat = "no-repeat";
         let i = velszam(1,23);
-        let kep =document.createElement("img")
+        let kep = document.createElement("img")
         if(!indexek.includes(i)){
-            aktid = i;
             indexek.push(i);
             vare = false;
             kep.src="img/"+i+".jpg";
-            document.getElementById("kepid").appendChild(kep);
+            document.getElementById("kepid").appendChild(kep); 
+            kep.dataset.ertek = kartyAdatok[i-1].value;
             click++;
-            console.log(aktid);
+            aktid = kep;
         }
         else{
             while(!indexek.includes(i))
@@ -174,25 +177,51 @@ function adjalkartyat(){
     }
 }
 
+function soroszlopertek(){
+    console.log("Sorok összege:");
+    for (let i = 0; i < 5; i++) {
+        let sorosszeg = 0;
+        for (let j = 0; j < 6; j++) {
+            let kep = document.getElementById(i*6+j).getElementsByTagName("img");
+            sorosszeg += Number(kep[0].dataset.ertek);
+        }
+        console.log(sorosszeg);
+    }
+    console.log("Oszlopok összege:");
+    for (let i = 0; i < 6; i++) {
+        let oszloposszeg = 0;
+        for (let j = 0; j < 5; j++) {
+            let kep = document.getElementById(j*6+i).getElementsByTagName("img");
+            oszloposszeg += Number(kep[0].dataset.ertek);
+        }
+        console.log(oszloposszeg);
+    }
+}
+
 function velszam(also, felso){
     return Math.floor(Math.random()*(felso-also+1)+also);
 }
 
-
-
 function berakas2(oszlopdiv){
-    var kepasd=document.createElement("img");
+    let kepasd = document.createElement("img");
     if(aktid!=0){
         if(vare == false){
-            kepasd.src="img/"+aktid+".jpg"
+            kepasd  = aktid;
             vare = true;
+            console.log(kepasd);
             kepasd.style.borderRadius = "44px";
+            telivan++;
         }
         else if(vare == true){
-            kepasd.src="img/var"+aktid+".png"
+            kepasd  = aktid;
             vare = false;
+            console.log(kepasd);
             let aktd = document.getElementById(aktid+"t");
             aktd.style.visibility = "hidden";
+            telivan++;
+        }
+        if(telivan==30){
+            soroszlopertek();
         }
         oszlopdiv.appendChild(kepasd);
         oszlopdiv.removeAttribute("onclick","berakas2(this)");
@@ -200,6 +229,7 @@ function berakas2(oszlopdiv){
         kepid.innerHTML="";
         aktid=0;
         click=0;
+        console.log(telivan);
         let kartyak = document.getElementById("pontok");
         kartyak.style.background = "url('img/kartyaalap.jpg')";
         kartyak.style.backgroundSize = "cover";
