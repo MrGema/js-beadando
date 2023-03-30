@@ -80,8 +80,9 @@ function JatekTerElrendezese(){
 
 function TablaGeneralasa(){
     var k = 0;
-    for (let i = 0; i < 5; i++) {
+    for (let i = 1; i < 6; i++) {
         var sordiv = document.createElement("div");
+        sordiv.id=i;
         sordiv.classList += " sordiv";
         for (let j = 0; j < 6; j++) 
         {
@@ -207,7 +208,7 @@ function soroszlopertek(){
         let oszloposszeg = 0;
         for (let j = 0; j < 5; j++) {
             let kep = document.getElementById(j*6+i).getElementsByTagName("img");
-            oszloposszeg += Number(kep[0].dataset.ertek);
+            oszchrloposszeg += Number(kep[0].dataset.ertek);
         }
         console.log(oszloposszeg);
     }
@@ -219,6 +220,22 @@ function velszam(also, felso){
 
 function berakas2(oszlopdiv){
     let kepasd = document.createElement("img");
+    let sordividvalue=0;
+    if(oszlopdiv.id<=5){
+        sordividvalue=1;
+    }
+    else if(oszlopdiv.id>=6 && oszlopdiv.id<=11){
+        sordividvalue=2;
+    }
+    else if(oszlopdiv.id>=12 && oszlopdiv.id<=17){
+        sordividvalue=3;
+    }
+    else if(oszlopdiv.id>=18 && oszlopdiv.id<=23){
+        sordividvalue=4;
+    }
+    else if(oszlopdiv.id>=24 && oszlopdiv.id<=29){
+        sordividvalue=5;
+    }
     if(aktid!=0){
         if(vare == false){
             kepasd  = aktid;
@@ -231,6 +248,8 @@ function berakas2(oszlopdiv){
             kepasd  = aktid;
             vare = false;
             console.log(kepasd);
+            kepasd.dataset.ertek=kepasd.dataset.ertek*sordividvalue;
+            console.log(kepasd.dataset.ertek);
             let aktd = document.getElementById(aktidtd+"t");
             aktd.style.visibility = "hidden";
             telivan++;
